@@ -2,9 +2,10 @@ import React, { FC } from "react";
 
 interface MessageProps {
   msg: string;
-  type: "danger" | "success";
+  type: "danger" | "success" | "info";
 }
 
+//!We can also update Message component, we can add new type(info).
 const Message: FC<MessageProps> = ({ msg, type }) => {
   let typeClass = "";
 
@@ -14,6 +15,10 @@ const Message: FC<MessageProps> = ({ msg, type }) => {
 
   if (type === "success") {
     typeClass = "is-success";
+  }
+
+  if (type === "info") {
+    typeClass = "is-info";
   }
 
   return (

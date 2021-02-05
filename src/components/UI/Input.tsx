@@ -4,6 +4,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
+//!Since we will be using file input we can update Input component to allow users to select and upload multiple files.
+
 const Input: FC<InputProps> = ({
   type = "text",
   placeholder,
@@ -11,6 +13,7 @@ const Input: FC<InputProps> = ({
   name,
   onChange,
   label,
+  multiple,
 }) => {
   return (
     <div className="field">
@@ -26,6 +29,7 @@ const Input: FC<InputProps> = ({
           onChange={onChange}
           required
           autoComplete="off"
+          multiple={multiple}
         />
       </div>
     </div>

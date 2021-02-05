@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/sections/Header";
@@ -20,6 +20,7 @@ import {
 } from "./store/actions/authActions";
 import { RootState } from "./store";
 
+//!In App component we only need to change Homepage route to normal route, it is not PublicRoute anymore but Route from react-router-dom because we want to show in both cases, when user is logged in and when user is not logged in.
 const App: FC = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state: RootState) => state.auth);
@@ -51,7 +52,7 @@ const App: FC = () => {
     <BrowserRouter>
       <Header />
       <Switch>
-        <PublicRoute path="/" component={Homepage} exact />
+        <Route path="/" component={Homepage} exact />
         <PublicRoute path="/signup" component={SignUp} exact />
         <PublicRoute path="/signin" component={SignIn} exact />
         <PublicRoute path="/forgot-password" component={ForgotPassword} exact />
